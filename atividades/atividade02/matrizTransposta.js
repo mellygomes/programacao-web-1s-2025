@@ -17,11 +17,10 @@ function transporMatriz(A) {
 }
 
 function imprimirMatriz(A) {
-    
     for (let i = 0; i < A.length; i++) {
         let linha = ""
         for (let j = 0; j < A[i].length; j++) {
-            linha += A[i][j] + "\t"
+            linha += A[i][j] + "  "
         }
         console.log(linha)
     }   
@@ -32,9 +31,9 @@ let matriz = [  //     ===>      [1, 4]
     [4, 5 ,6]   //  transposta   [3, 6]
 ]               
 
-console.log("\nMatriz original: \n")
+console.log("\nMatriz: \n")
 imprimirMatriz(matriz)
 
-console.log("\nMatriz transposta: \n")
+console.log("\nTransposta: \n")
 imprimirMatriz(transporMatriz(matriz))
 console.log("\n")
