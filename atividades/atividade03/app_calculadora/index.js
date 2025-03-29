@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-const calc = require('./calculadora')
+const calc = require('./util/calculadora')
 
 app.get('/', (req, res) => {
     let html = '<h1>Olá, mundo!</h1>'
@@ -47,7 +47,7 @@ app.get('/dividir/:a/:b', (req, res) => {
     let a = Number(req.params.a)
     let b = Number(req.params.b)
 
-    result = calc.div(a. b)
+    result = calc.div(a, b)
 
     res.send(`${a} / ${b} = ${result}`)
 })
