@@ -42,11 +42,14 @@ function remover(id) {
         return false
     }
 
+    let i = 0
     itens.forEach(item_cadastrado => {
         if(item_cadastrado.id == id) {
-            itens.pop(item_cadastrado)
+            itens.splice(i, 1)
             remove = true
         }
+
+        i = i + 1
     })
 
     return remove
