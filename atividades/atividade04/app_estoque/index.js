@@ -14,29 +14,31 @@ app.get('/', (req, res) => {
     res.send(html)
 })
 
-app.get('adicionar/:id/:nome/:qtd', (req, res) => {
+app.get('/adicionar/:id/:nome/:qtd', (req, res) => {
     let item = {
         id: Number(req.params.id),
         nome: req.params.nome,
         qtd: Number(req.params.qtd)
     }
 
-    res.send(item)
+    res.send(estoque.adicionar(item))
 })
-app.get('listar', (req, res) => {
-    res.send(estoque.listar)
-})
-
-app.get('remover/:id', (req, res) => {
-
-    
+app.get('/listar', (req, res) => {
+    res.send(estoque.listar())
 })
 
-app.get('editar/:id/:qtd', (req, res) => {
-    let id = req.params.id
-    let qtd = req.params.qtd
+app.get('/editar/:id/:qtd', (req, res) => {
+    let id = Number(req.params.id)
+    let qtd = Number(req.params.qtd)
 
-    res.send(estoque.editar)
+    res.send(estoque.editar(id, qtd))
+})
+
+app.get('/remover/:id', (req, res) => {
+    let id = Number(req.params.id)
+
+    res.send(estoque.remover(id))
+
 })
 
 const PORT = 8080

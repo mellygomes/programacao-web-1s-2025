@@ -1,10 +1,13 @@
 let itens = []
+let i = 0
 
 function adicionar(item) {
     let item_valido = true
 
     if(validar_item_a_cadastrar(item)) {
         itens.push(item)
+    } else {
+        item_valido = false
     }
 
     return item_valido
@@ -14,22 +17,43 @@ function listar() {
     return itens
 }
 
-function editar(id, tqd) {
-    if (!is_numerico(id) || !is_id_cadastrado(id) || !is_numerico(qtd) || qtd <= 0) {
+function editar(id, qtd) {
+    let edit = true
+
+    if ((is_numerico(id) == false) || (is_id_cadastrado(id) == false) || (is_numerico(qtd) == false) || (qtd < 0) || (id < 0)) {
         return false
     }
 
     itens.forEach(item_cadastrado => {
         if(item_cadastrado.id == id) {
-            item_cadastrado = qtd
-        }
+            item_cadastrado.qtd = qtd
 
-        return true
+            edit = true
+        }
     })
+
+    return edit
+}
+
+function remover(id) {
+    let remove = true
+
+    if ((is_numerico(id) == false) || (is_id_cadastrado(id) == false) || (id < 0)) {
+        return false
+    }
+
+    itens.forEach(item_cadastrado => {
+        if(item_cadastrado.id == id) {
+            itens.pop(item_cadastrado)
+            remove = true
+        }
+    })
+
+    return remove
 }
 
 function is_numerico(n) {
-    if (isNaN(n) || n == null) {
+    if (!isNaN(n) || n != null) {
         return true
     } else {
         return false
@@ -39,9 +63,9 @@ function is_numerico(n) {
 function is_id_cadastrado(id) {
     let item_valido = false
 
-    itens.array.forEach(item_cadastrado => {
-        if(item.id == item_cadastrado) {
-            item_valido = falso
+    itens.forEach(item_cadastrado => {
+        if(id == item_cadastrado.id) {
+            item_valido = true
         }
     });
 
@@ -63,11 +87,11 @@ function validar_item_a_cadastrar(item) {
         item_valido = false
     }
 
-    if (!is_id_cadastrado) {
+    if (is_id_cadastrado(item.id)) {
         item_valido = false
     }
 
     return item_valido
 }
 
-module.exports = {adicionar, listar, editar}
+module.exports = {adicionar, listar, editar, remover}
