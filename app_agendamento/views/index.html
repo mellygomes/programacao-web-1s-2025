@@ -28,6 +28,13 @@
         </div>
         {{/campos_invalidos}}
 
+        {{#datas_invalidas}}
+        <div class="alert alert-warning mt-2">
+            <strong>{{.}}</strong> É inválida! Deve ser coerente de acordo com a data atual.
+        </div>
+        {{/datas_invalidas}}
+
+
         <form action="/agendar_consulta" method="POST">
             <div class="row">
                 <h3> Dados do paciente </h2>
