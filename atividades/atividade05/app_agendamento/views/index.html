@@ -17,23 +17,22 @@
         <h2 class="text-center p-2b "> Agendamento </h2>
 
         {{#erro_form}}
-        <div class="alert alert-warning mt-2">
-            <strong>Formulário</strong> inválido. Preencha todos os campos!
-        </div>
+            <div class="alert alert-warning mt-2">
+                <strong>Formulário</strong> inválido. Preencha todos os campos!
+            </div>
         {{/erro_form}}
 
         {{#campos_invalidos}}
-        <div class="alert alert-warning mt-2">
-            <strong>{{.}}</strong> Não pode ser vazio!
-        </div>
+            <div class="alert alert-warning mt-2">
+                <strong>{{.}}</strong> Não pode ser vazio!
+            </div>
         {{/campos_invalidos}}
 
         {{#datas_invalidas}}
-        <div class="alert alert-warning mt-2">
-            <strong>{{.}}</strong> É inválida! Deve ser coerente de acordo com a data atual.
-        </div>
+            <div class="alert alert-warning mt-2">
+                <strong>{{.}}</strong> É inválida! Deve ser coerente de acordo com a data atual.
+            </div>
         {{/datas_invalidas}}
-
 
         <form action="/agendar_consulta" method="POST">
             <div class="row">
@@ -42,17 +41,17 @@
                 <div class="col-6">
                     <div class="mb-4">
                         <label for="nome" class="form-label">Nome: </label> 
-                        <input class="form-control form-control-sm" type="text" placeholder="Nome" aria-label=".form-control-sm example" name="nome" id="nome">
+                        <input class="form-control form-control-sm" type="text" value="{{dados_consulta.nome}}" placeholder="Nome" aria-label=".form-control-sm example" name="nome" id="nome">
                     </div>
 
                     <div class="mb-4">
                         <label for="cpf" class="form-label">CPF:</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="000.000.000-00" aria-label=".form-control-sm example" name="cpf" id="cpf">
+                        <input class="form-control form-control-sm" type="text" value="{{dados_consulta.cpf}}" placeholder="000.000.000-00" aria-label=".form-control-sm example" name="cpf" id="cpf">
                     </div>
 
                     <div class="mb-4">
                         <label for="telefone" class="form-label">Telefone:</label>
-                        <input class="form-control form-control-sm" type="text" placeholder="(00) 00000-0000" aria-label=".form-control-sm example" name="telefone" id="telefone">
+                        <input class="form-control form-control-sm" type="text" value="{{dados_consulta.telefone}}" placeholder="(00) 00000-0000" aria-label=".form-control-sm example" name="telefone" id="telefone">
                     </div>
                 </div>
 
@@ -75,7 +74,7 @@
 
                 <div class="mb-4">
                     <label for="endereco" class="form-label">Endereço:</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="Rua/Avenida, nº (número) - bairro, município - UF" aria-label=".form-control-sm example" name="endereco" id="endereco">
+                    <input class="form-control form-control-sm" type="text" value="{{dados_consulta.endereco}}" placeholder="Rua/Avenida, nº (número) - bairro, município - UF" aria-label=".form-control-sm example" name="endereco" id="endereco">
                 </div>
             </div>
 
@@ -95,7 +94,7 @@
 
                     <div class="mb-4">
                         <label for="data" class="form-label">Data:</label>
-                        <input class="form-control form-control-sm" type="date" placeholder="DD/MM/AAAA" aria-label=".form-control-sm example" name="data" id="data">
+                        <input class="form-control form-control-sm" type="date" value="{{dados_consulta.data}}" placeholder="DD/MM/AAAA" aria-label=".form-control-sm example" name="data" id="data">
                     </div>
                 </div>
 
@@ -112,13 +111,13 @@
 
                     <div class="mb-4">
                         <label for="horario" class="form-label">Hora:</label>
-                        <input class="form-control form-control-sm" type="time" placeholder="00:00" aria-label=".form-control-sm example" name="hora" id="hora">
+                        <input class="form-control form-control-sm" type="time" value="{{dados_consulta.horario}}" placeholder="00:00" aria-label=".form-control-sm example" name="hora" id="hora">
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="observacoes" class="form-label">Observações:</label>
-                    <textarea class="form-control" id="observacoes" rows="3" placeholder="Digite..." aria-label=".form-control-sm example" style="resize: none" name="observacoes" id="observacoes"></textarea>
+                    <textarea class="form-control" id="observacoes" rows="3" placeholder="Digite..." value="{{dados_consulta.observacoes}}" aria-label=".form-control-sm example" style="resize: none" name="observacoes" id="observacoes"></textarea>
                 </div>
             </div>
 
